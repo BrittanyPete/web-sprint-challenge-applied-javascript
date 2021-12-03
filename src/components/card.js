@@ -40,9 +40,14 @@ const Card = (article) => {
   authorDiv.appendChild(imgContainer);
   authorDiv.appendChild(authorName);
   imgContainer.appendChild(authorPhoto);
+
+  cardDiv.addEventListener('click', event => {
+    console.log(`${article.headline}`)
+  })
     
  return cardDiv;
 }
+
 
 
   // TASK 6
@@ -61,40 +66,21 @@ const cardAppender = (selector) => {
 
   axios.get(`http://localhost:5000/api/articles`)
   .then(resp => {
-    console.log(resp.data.articles);
     const articleCard = document.querySelector(selector);
     const articleList = resp.data.articles;
     const articleListArray = Object.keys(articleList);
     const articleListValues = Object.values(articleList);
-    console.log(articleListValues);
-    console.log(articleListArray);
+
     for (let i = 0; i < articleListValues.length; i++) {
       const innerArray = articleListValues[i].length;
       for (let j = 0; j < innerArray; j++) {
         articleCard.appendChild(Card(articleListValues[i][j]));
       }
-    }
-
-    //  articleCard.appendChild(Card(articleListArray)); 
-     
+    } 
   }).catch(error => {
     console.log(error)
-  }).finally(() => console.log('cardAppender ran'))
+  })
 }
 
 export { Card, cardAppender }
 
-
-// function firstLoop(articleListArray) {
-//   for(let i =0; i < articleListArray.length; i++) {
-//     return articleListArray[i];
-//     console.log(articleListArray[i]);
-//   }
-// }
-
-
-//   function secondLoop(firstLoop) {
-//     for (let j = 0; j < firstLoop.length; j++) {
-//       return articleCard.appendChild(Card(secondLoop[j]))
-//     }
-//   }

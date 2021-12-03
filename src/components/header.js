@@ -13,7 +13,7 @@
   //
 
   // console.log('it is linking');
-
+  
 
 const Header = (title, date, temp) => {
   const headerDiv = document.createElement('div');
@@ -29,8 +29,8 @@ const Header = (title, date, temp) => {
   dateSpan.textContent = date;
   tempSpan.textContent = temp;
 
-  headerDiv.appendChild(titleHeader);
   headerDiv.appendChild(dateSpan);
+  headerDiv.appendChild(titleHeader);
   headerDiv.appendChild(tempSpan);
 
   
@@ -49,7 +49,7 @@ const Header = (title, date, temp) => {
  
 const headerAppender = (selector) => {
   const headContainer = document.querySelector(selector);
-  headContainer.appendChild(Header('Lambda Times', 'December 3, 2021', '32 Degrees'));
+  headContainer.appendChild(Header('Lambda Times', 'December 3, 2021', '32 °'));
   
 }
 
