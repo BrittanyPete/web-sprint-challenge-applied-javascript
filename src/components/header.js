@@ -12,8 +12,6 @@
   //  </div>
   //
 
-  // console.log('it is linking');
-  
 
 const Header = (title, date, temp) => {
   const headerDiv = document.createElement('div');
@@ -33,10 +31,8 @@ const Header = (title, date, temp) => {
   headerDiv.appendChild(titleHeader);
   headerDiv.appendChild(tempSpan);
 
-  
   return headerDiv;  
 }
-
 
 
   // TASK 2
@@ -46,13 +42,10 @@ const Header = (title, date, temp) => {
   // It should append the header to the element in the DOM that matches the given selector.
   //
   
- 
 const headerAppender = (selector) => {
   const headContainer = document.querySelector(selector);
   headContainer.appendChild(Header('Lambda Times', 'December 3, 2021', '32 °'));
   
 }
-
-
 
 export { Header, headerAppender }
