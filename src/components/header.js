@@ -12,8 +12,12 @@
   //  </div>
   //
 
+  // console.log('it is linking');
+
+
 const Header = (title, date, temp) => {
   const headerDiv = document.createElement('div');
+  const titleHeader = document.createElement('h1');
   const dateSpan = document.createElement('span');
   const tempSpan = document.createElement('span');
 
@@ -21,19 +25,19 @@ const Header = (title, date, temp) => {
   dateSpan.classList.add('date');
   tempSpan.classList.add('temp');
 
-  headerDiv.textContent = title;
+  titleHeader.textContent = title;
   dateSpan.textContent = date;
   tempSpan.textContent = temp;
 
+  headerDiv.appendChild(titleHeader);
   headerDiv.appendChild(dateSpan);
   headerDiv.appendChild(tempSpan);
 
-
-  return headerDiv;
   
+  return headerDiv;  
 }
 
-console.log(Header('test one', 'test two', 'test 3'));
+
 
   // TASK 2
   // ---------------------
@@ -41,12 +45,14 @@ console.log(Header('test one', 'test two', 'test 3'));
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
-
+  
+ 
 const headerAppender = (selector) => {
-  const headerContainer = document.querySelector(selector);
-  // headerContainer.appendChild(Header);
-
-
+  const headContainer = document.querySelector(selector);
+  headContainer.appendChild(Header('Lambda Times', 'December 3, 2021', '32 Degrees'));
+  
 }
+
+
 
 export { Header, headerAppender }
