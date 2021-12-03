@@ -19,8 +19,7 @@ import axios from 'axios';
 const Tabs = (topics) => {
   const topicsList = document.createElement('div');
   topicsList.classList.add('topics');
-  console.log(topicsList)
-
+  
   topics.forEach(elem => {
     const newDiv = document.createElement('div');
     newDiv.classList.add('tab');
@@ -48,7 +47,7 @@ const tabsAppender = (selector) => {
 
   }).catch(error => {
     console.log(error);
-  }).finally('this is finished')
+  })
 
 };
 

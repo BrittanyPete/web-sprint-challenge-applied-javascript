@@ -19,30 +19,29 @@ import axios from 'axios';
   //
 
 const Card = (article) => {
-  const card = document.createElement('div');
-  const headlineDiv = document.createElement('div');
+  const cardDiv = document.createElement('div');
+  const headline = document.createElement('div');
   const authorDiv = document.createElement('div');
   const imgContainer = document.createElement('div');
   const authorPhoto = document.createElement('img');
   const authorName = document.createElement('span');
 
-  card.classList.add('card');
-  headlineDiv.classList.add('headline');
+  cardDiv.classList.add('card');
+  headline.classList.add('headline');
   authorDiv.classList.add('author');
   imgContainer.classList.add('img-container');
   
-  headlineDiv.textContent = headline;
-  authorPhoto.src = authorPhoto;
-  authorName.textContent = authorName;
+  headline.textContent = article.headline;
+  authorPhoto.src = article.authorPhoto;
+  authorName.textContent = article.authorName;
 
-  card.appendChild(headlineDiv);
-  card.appendChild(authorDiv);
+  cardDiv.appendChild(headline);
+  cardDiv.appendChild(authorDiv);
   authorDiv.appendChild(imgContainer);
   authorDiv.appendChild(authorName);
   imgContainer.appendChild(authorPhoto);
-
-
- return card;
+    
+ return cardDiv;
 }
 
 
@@ -54,8 +53,48 @@ const Card = (article) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+
+
+
 const cardAppender = (selector) => {
 
+  axios.get(`http://localhost:5000/api/articles`)
+  .then(resp => {
+    console.log(resp.data.articles);
+    const articleCard = document.querySelector(selector);
+    const articleList = resp.data.articles;
+    const articleListArray = Object.keys(articleList);
+    const articleListValues = Object.values(articleList);
+    console.log(articleListValues);
+    console.log(articleListArray);
+    for (let i = 0; i < articleListValues.length; i++) {
+      const innerArray = articleListValues[i].length;
+      for (let j = 0; j < innerArray; j++) {
+        articleCard.appendChild(Card(articleListValues[i][j]));
+      }
+    }
+
+    //  articleCard.appendChild(Card(articleListArray)); 
+     
+  }).catch(error => {
+    console.log(error)
+  }).finally(() => console.log('cardAppender ran'))
 }
 
 export { Card, cardAppender }
+
+
+// function firstLoop(articleListArray) {
+//   for(let i =0; i < articleListArray.length; i++) {
+//     return articleListArray[i];
+//     console.log(articleListArray[i]);
+//   }
+// }
+
+
+//   function secondLoop(firstLoop) {
+//     for (let j = 0; j < firstLoop.length; j++) {
+//       return articleCard.appendChild(Card(secondLoop[j]))
+//     }
+//   }
