@@ -1,3 +1,4 @@
+import axios from 'axios';
  // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -18,7 +19,30 @@
   //
 
 const Card = (article) => {
- 
+  const card = document.createElement('div');
+  const headlineDiv = document.createElement('div');
+  const authorDiv = document.createElement('div');
+  const imgContainer = document.createElement('div');
+  const authorPhoto = document.createElement('img');
+  const authorName = document.createElement('span');
+
+  card.classList.add('card');
+  headlineDiv.classList.add('headline');
+  authorDiv.classList.add('author');
+  imgContainer.classList.add('img-container');
+  
+  headlineDiv.textContent = headline;
+  authorPhoto.src = authorPhoto;
+  authorName.textContent = authorName;
+
+  card.appendChild(headlineDiv);
+  card.appendChild(authorDiv);
+  authorDiv.appendChild(imgContainer);
+  authorDiv.appendChild(authorName);
+  imgContainer.appendChild(authorPhoto);
+
+
+ return card;
 }
 
 
